@@ -5,8 +5,8 @@ public protocol WeatherService {
 }
 
 class WeatherServiceImpl: WeatherService {
-    let url = "https://api.openweathermap.org/data/2.5/weather?lat=44.56&lon=123.26&appid=d8310c9fbcfaee650d22017af4646e00"
-
+    //let url = "https://api.openweathermap.org/data/2.5/weather?lat=44.56&lon=123.26&appid=d8310c9fbcfaee650d22017af4646e00"
+    let url = "https://localhost:5000/data/2.5/weather"
     func getTemperature() async throws -> Int {
         return try await withCheckedThrowingContinuation { continuation in
             AF.request(url, method: .get).validate(statusCode: 200..<300).responseDecodable(of: Weather.self) { response in
